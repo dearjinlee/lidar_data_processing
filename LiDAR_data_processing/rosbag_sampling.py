@@ -7,12 +7,6 @@ import numpy as np
 from pathlib2 import Path
 import glob
 
-import sys
-sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
-import cv2
-sys.path.append('/opt/ros/kinetic/lib/python2.7/dist-packages')
-from cv_bridge import CvBridge
-
 if __name__=='__main__':
     parser = argparse.ArgumentParser(description='arg parser')
     parser.add_argument('--data_dir', type=str, default=None, help='directory path')
@@ -27,7 +21,6 @@ if __name__=='__main__':
     for bag_path in list_bag:
         
         bag = rosbag.Bag(bag_path)
-        bridge = CvBridge()
         
         bag_filename = (bag_path.split('/')[-1]).split('.')[0]
         print(bag_filename)
